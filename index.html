@@ -1,0 +1,116 @@
+Here’s a simple HTML + JavaScript project to display an Exam Result Calculator.
+
+
+---
+
+✅ Exam Result Calculator (HTML + JavaScript)
+
+💡 Features:
+
+Enter student name and subject marks
+
+Calculates total, average, and result (Pass/Fail)
+
+Shows result summary
+
+
+
+---
+
+🧾 Full Code (Copy & Paste)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Result Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 30px;
+        }
+        .container {
+            background: #fff;
+            padding: 25px;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: teal;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkcyan;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Exam Result Calculator</h2>
+
+    <label>Student Name:</label>
+    <input type="text" id="studentName">
+
+    <label>Math Marks:</label>
+    <input type="number" id="math" min="0" max="100">
+
+    <label>Science Marks:</label>
+    <input type="number" id="science" min="0" max="100">
+
+    <label>English Marks:</label>
+    <input type="number" id="english" min="0" max="100">
+
+    <label>History Marks:</label>
+    <input type="number" id="history" min="0" max="100">
+
+    <button onclick="calculateResult()">Get Result</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateResult() {
+        const name = document.getElementById("studentName").value;
+        const math = parseInt(document.getElementById("math").value) || 0;
+        const science = parseInt(document.getElementById("science").value) || 0;
+        const english = parseInt(document.getElementById("english").value) || 0;
+        const history = parseInt(document.getElementById("history").value) || 0;
+
+        const total = math + science + english + history;
+        const average = total / 4;
+
+        let status = "Pass";
+        if (math < 35 || science < 35 || english < 35 || history < 35) {
+            status = "Fail";
+        }
+
+        document.getElementById("result").innerHTML = `
+            Student: <strong>${name}</strong><br>
+            Total Marks: <strong>${total}/400</strong><br>
+            Average: <strong>${average.toFixed(2)}</strong><br>
+            Result: <strong style="color: ${status === 'Pass' ? 'green' : 'red'}">${status}</strong>
+        `;
+    }
+</script>
+
+</body>
+</html>
